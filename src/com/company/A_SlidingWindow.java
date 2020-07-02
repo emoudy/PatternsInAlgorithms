@@ -12,17 +12,17 @@ public class A_SlidingWindow {
         //Explanation: Subarray with maximum sum is [5, 1, 3].
 
         public static int findMaxSumSubArray(int k, int[] arr) {
+            //Time complexity O(n)
+            //Space complexity O(1)
             long startTime = System.nanoTime();
             int windowStart = 0;
             int windowSum = 0;
-            int windowMaxSum = 0;
+            int maxSum = 0;
 
             for(int i=0; i <= arr.length-1; i++) {
                 windowSum += arr[i];
                 if(i >= k-1){
-                    if (windowSum >= windowMaxSum) {
-                        windowMaxSum = windowSum;
-                    }
+                    maxSum = Math.max(maxSum, windowSum);
                     windowSum -= arr[windowStart];
                     windowStart++;
                 }
@@ -31,10 +31,12 @@ public class A_SlidingWindow {
             long stopTime = System.nanoTime();
             long elapsedTime = stopTime - startTime;
             System.out.println("elapsedTime findMaxSumSubArray: " + elapsedTime);
-            return windowMaxSum;
+            return maxSum;
         }
 
-        public static int findMaxSumSubArrayBookSolution(int k, int[] arr) {
+        public static int findMaxSumSubArrayBookSolution1(int k, int[] arr) {
+            //Time complexity O(n * k)
+            //Space complexity O(1)
             long startTime = System.nanoTime();
             int maxSum = 0;
             int windowSum;
@@ -50,6 +52,25 @@ public class A_SlidingWindow {
             long stopTime = System.nanoTime();
             long elapsedTime = stopTime - startTime;
             System.out.println("elapsedTime findMaxSumSubArrayBookSolution: " + elapsedTime);
+            return maxSum;
+        }
+
+        public static int findMaxSumSubArrayBookSolution2(int k, int[] arr) {
+            //Time complexity O(n)
+            //Space complexity O(1)
+            int windowSum = 0;
+            int maxSum = 0;
+            int windowStart = 0;
+
+            for (int windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+                windowSum += arr[windowEnd]; // add the next element
+                // slide the window, we don't need to slide if we've not hit the required window size of 'k'
+                if (windowEnd >= k - 1) {
+                    maxSum = Math.max(maxSum, windowSum);
+                    windowSum -= arr[windowStart]; // subtract the element going out
+                    windowStart++; // slide the window ahead
+                }
+            }
             return maxSum;
         }
     }
