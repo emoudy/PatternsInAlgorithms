@@ -333,10 +333,64 @@ public class A_SlidingWindow {
         return lengthSubArr;
     }
 
-    static boolean stringPermutationOfAPattern(String a, String b){
+    static boolean stringPermutationOfAPattern(String str, String pattern){
         boolean isPermutation = false;
-        int windowStart = 0, letterCheck = 0;
-        
+        int patternLength = pattern.length(), matchingLetters = 0;
+        HashMap<Character, Integer> patternMap = new HashMap<>();
+
+        //add the characters of the pattern to the HashMap
+        for (char chr : pattern.toCharArray())
+            patternMap.put(chr, patternMap.getOrDefault(chr, 0) + 1);
+
+        //loop through the string
+        for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char letterInString = str.charAt(windowEnd);
+            //checks for letters in the pattern
+            if (patternMap.containsKey(letterInString) && patternMap.get(letterInString) > 0) {
+                matchingLetters++;
+                patternMap.put(letterInString, patternMap.get(letterInString) - 1);
+                if (matchingLetters == patternLength) isPermutation = true;
+            } else {
+                matchingLetters = 0;
+                for (char chr : pattern.toCharArray()) {
+                    patternMap.put(chr, patternMap.getOrDefault(chr, 0) + 1);
+                }
+            }
+        }
         return isPermutation;
+    }
+
+    static boolean stringPermutationOfAPatternBookSolution(String str, String pattern){
+        int windowStart = 0, matchingLetters = 0;
+        HashMap<Character, Integer> charFrequencyMap = new HashMap<>();
+
+        for (char chr : pattern.toCharArray())
+            charFrequencyMap.put(chr, charFrequencyMap.getOrDefault(chr, 0) + 1);
+
+        // our goal is to match all the characters from the 'charFrequencyMap' with the current window
+        // try to extend the range [windowStart, windowEnd]
+        for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char rightChar = str.charAt(windowEnd);
+            if (charFrequencyMap.containsKey(rightChar)) {
+                // decrement the frequency of the matched character
+                charFrequencyMap.put(rightChar, charFrequencyMap.get(rightChar) - 1);
+                if (charFrequencyMap.get(rightChar) == 0) // character is completely matched
+                    matchingLetters++;
+            }
+
+            if (matchingLetters == charFrequencyMap.size())
+                return true;
+
+            if (windowEnd >= pattern.length() - 1) { // shrink the window by one character
+                char leftChar = str.charAt(windowStart++);
+                if (charFrequencyMap.containsKey(leftChar)) {
+                    if (charFrequencyMap.get(leftChar) == 0)
+                        matchingLetters--; // before putting the character back, decrement the matched count
+                    // put the character back for matching
+                    charFrequencyMap.put(leftChar, charFrequencyMap.get(leftChar) + 1);
+                }
+            }
+        }
+        return false;
     }
 }

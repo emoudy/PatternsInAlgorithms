@@ -52,7 +52,7 @@ public class Main {
         //Explanation: Replace the '0' at index 5 and 8 to have the longest contiguous subarray of 1s having length 6.
         //System.out.println(A_SlidingWindow.longestSubArrayAfterReplacement(new int[]{ 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1 }, 2));
 
-        //String Permutations
+        //Challenge1 String Permutations
         //Given a string and a pattern, find out if the string contains any permutation of the pattern.
         //Permutation is defined as the re-arranging of the characters of the string. For example, “abc” has the following six permutations:
 
@@ -68,6 +68,24 @@ public class Main {
         //Input: String="oidbcaf", Pattern="abc"
         //Output: true
         //Explanation: The string contains "bca" which is a permutation of the given pattern.
-        System.out.println(A_SlidingWindow.stringPermutationOfAPattern("oidbcaf", "abc"));
+        System.out.println(A_SlidingWindow.stringPermutationOfAPattern("bcdxabcdy", "bcdyabcdx"));
+
+        //Challenge2 String Anagrams
+        //Given a string and a pattern, find all anagrams of the pattern in the given string.
+        //Anagram is actually a Permutation of a string. For example, “abc” has the following six anagrams:
+
+        //abc
+        //acb
+        //bac
+        //bca
+        //cab
+        //cba
+
+        // a string has ‘n’ distinct characters it will have n!n!n! permutations.
+
+        //Input: String="oidbcaf", Pattern="abc"
+        //Output: true
+        //Explanation: The string contains "bca" which is a permutation of the given pattern.
+        System.out.println(A_SlidingWindow.stringPermutationOfAPattern("bcdxabcdy", "bcdyabcdx"));
     }
 }
