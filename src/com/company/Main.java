@@ -55,37 +55,37 @@ public class Main {
         //Challenge1 String Permutations
         //Given a string and a pattern, find out if the string contains any permutation of the pattern.
         //Permutation is defined as the re-arranging of the characters of the string. For example, “abc” has the following six permutations:
-
         //abc
         //acb
         //bac
         //bca
         //cab
         //cba
-
         // a string has ‘n’ distinct characters it will have n!n!n! permutations.
-
         //Input: String="oidbcaf", Pattern="abc"
         //Output: true
         //Explanation: The string contains "bca" which is a permutation of the given pattern.
-        System.out.println(A_SlidingWindow.stringPermutationOfAPattern("bcdxabcdy", "bcdyabcdx"));
+        //System.out.println(A_SlidingWindow.stringPermutationOfAPattern("bcdxabcdy", "bcdyabcdx"));
 
         //Challenge2 String Anagrams
         //Given a string and a pattern, find all anagrams of the pattern in the given string.
         //Anagram is actually a Permutation of a string. For example, “abc” has the following six anagrams:
-
         //abc
         //acb
         //bac
         //bca
         //cab
         //cba
+        //Input: String="abbcabc", Pattern="abc"
+        //Output: [2, 3, 4]
+        //Explanation: The three anagrams of the pattern in the given string are "bca", "cab", and "abc".
+        //System.out.println(A_SlidingWindow.stringAnagramsOfAPattern("abbcabc", "abc"));
 
-        // a string has ‘n’ distinct characters it will have n!n!n! permutations.
-
-        //Input: String="oidbcaf", Pattern="abc"
-        //Output: true
-        //Explanation: The string contains "bca" which is a permutation of the given pattern.
-        System.out.println(A_SlidingWindow.stringPermutationOfAPattern("bcdxabcdy", "bcdyabcdx"));
+        //Challenge3 Smallest Window containing Substring
+        //Given a string and a pattern, find the smallest substring in the given string which has all the characters of the given pattern.
+        //Input: String="aabdec", Pattern="abc"
+        //Output: "abdec"
+        //Explanation: The smallest substring having all characters of the pattern is "abdec"
+        //System.out.println(A_SlidingWindow.smallesSubtringWithPattern("abdabca", "abc"));
     }
 }
