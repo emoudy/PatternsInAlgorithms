@@ -465,7 +465,135 @@ CHALLENGE #2
 CHALLENGE #3
  */
     static String smallesSubtringWithPattern(String str, String pattern) {
-    return "";
+        String smallestSubStr = "";
+        int windowStart = 0, startIndex = 0, endIndex = 0, smallestLength = Integer.MAX_VALUE;
+        HashMap<Character, Integer> patternLetterFreq = new HashMap<>();
+        HashMap<Character, Integer> strLetterFreq = new HashMap<>();
+
+        //initialize the HashMap
+        for (char chr : pattern.toCharArray()) patternLetterFreq.put(chr, patternLetterFreq.getOrDefault(chr, 0) + 1);
+
+        //loop to add/remove values to letterFreq
+        for(int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char rightLetter = str.charAt(windowEnd);
+            char leftLetter = str.charAt(windowStart);
+
+            if (patternLetterFreq.containsKey(rightLetter)) {
+                strLetterFreq.put(rightLetter, strLetterFreq.getOrDefault(rightLetter, 0) + 1);
+            }
+
+            if (strLetterFreq.get(leftLetter) > patternLetterFreq.get(leftLetter)) {
+                strLetterFreq.put(rightLetter, strLetterFreq.getOrDefault(rightLetter, 0) - 1);
+                windowStart++;
+                leftLetter = str.charAt(windowStart);
+                while (!patternLetterFreq.containsKey(leftLetter)) {
+                    windowStart++;
+                    leftLetter = str.charAt(windowStart);
+                }
+            }
+
+            if (patternLetterFreq.equals(strLetterFreq)) {
+                if (windowEnd - windowStart + 1 < smallestLength) {
+                    startIndex = windowStart;
+                    endIndex = windowEnd;
+                    if (endIndex < str.length() - 1) {
+                        smallestSubStr = str.substring(startIndex, endIndex + 1);
+                    } else {
+                        smallestSubStr = str.substring(startIndex);
+                    }
+                    if (smallestSubStr.length() == pattern.length()) return smallestSubStr;
+                }
+            }
+        }
+        return smallestSubStr;
+    }
+    static String smallesSubtringWithPatternBookSolution(String str, String pattern) {
+        int windowStart = 0, matched = 0, minLength = str.length() + 1, subStrStart = 0;
+        HashMap<Character, Integer> charFrequencyMap = new HashMap<>();
+
+        for (char chr : pattern.toCharArray())
+            charFrequencyMap.put(chr, charFrequencyMap.getOrDefault(chr, 0) + 1);
+
+        // try to extend the range [windowStart, windowEnd]
+        for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char rightChar = str.charAt(windowEnd);
+            if (charFrequencyMap.containsKey(rightChar)) {
+                charFrequencyMap.put(rightChar, charFrequencyMap.get(rightChar) - 1);
+                if (charFrequencyMap.get(rightChar) >= 0) // count every matching of a character
+                    matched++;
+            }
+
+            // shrink the window if we can, finish as soon as we remove a matched character
+            while (matched == pattern.length()) {
+                if (minLength > windowEnd - windowStart + 1) {
+                    minLength = windowEnd - windowStart + 1;
+                    subStrStart = windowStart;
+                }
+
+                char leftChar = str.charAt(windowStart++);
+                if (charFrequencyMap.containsKey(leftChar)) {
+                    // note that we could have redundant matching characters, therefore we'll decrement the
+                    // matched count only when a useful occurrence of a matched character is going out of the window
+                    if (charFrequencyMap.get(leftChar) == 0)
+                        matched--;
+                    charFrequencyMap.put(leftChar, charFrequencyMap.get(leftChar) + 1);
+                }
+            }
+        }
+        return minLength > str.length() ? "" : str.substring(subStrStart, subStrStart + minLength);
     }
 
+    static List<Integer> wordsConcatenation(String str, String[] words) {
+        ArrayList<Integer> concatenation = new ArrayList<>();
+        Boolean prevWord0Match = false;
+        Boolean prevWord1Match = false;
+
+        for(int letter = 0; letter < str.length(); letter += 3){
+            String oneWord = "";
+
+            for (int character = letter; character < letter + 3; character++){
+                oneWord += (str.charAt(character));
+            }
+
+            if (oneWord.equals(words[0])) prevWord0Match = true;
+            else if (oneWord.equals(words[1])) prevWord1Match = true;
+
+            if (prevWord0Match == true && prevWord1Match == true) {
+                concatenation.add(letter - 3);
+                if (oneWord.equals(words[0])) prevWord1Match = false;
+                if (oneWord.equals(words[1])) prevWord0Match = false;
+            }
+        }
+        return concatenation;
+    }
+
+    static List<Integer> wordsConcatenationBookSolution(String str, String[] words) {
+        HashMap<String, Integer> wordFrequencyMap = new HashMap<>();
+        for (String word : words)
+            wordFrequencyMap.put(word, wordFrequencyMap.getOrDefault(word, 0) + 1);
+
+        List<Integer> resultIndices = new ArrayList<Integer>();
+        int wordsCount = words.length, wordLength = words[0].length();
+
+        for (int i = 0; i <= str.length() - wordsCount * wordLength; i++) {
+            HashMap<String, Integer> wordsSeen = new HashMap<>();
+            for (int j = 0; j < wordsCount; j++) {
+                int nextWordIndex = i + j * wordLength;
+                // get the next word from the string
+                String word = str.substring(nextWordIndex, nextWordIndex + wordLength);
+                if (!wordFrequencyMap.containsKey(word)) // break if we don't need this word
+                    break;
+
+                wordsSeen.put(word, wordsSeen.getOrDefault(word, 0) + 1); // add the word to the 'wordsSeen' map
+
+                // no need to process further if the word has higher frequency than required
+                if (wordsSeen.get(word) > wordFrequencyMap.getOrDefault(word, 0))
+                    break;
+
+                if (j + 1 == wordsCount) // store index if we have found all the words
+                    resultIndices.add(i);
+            }
+        }
+        return resultIndices;
+    }
 }

@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         /*
@@ -87,5 +89,14 @@ public class Main {
         //Output: "abdec"
         //Explanation: The smallest substring having all characters of the pattern is "abdec"
         //System.out.println(A_SlidingWindow.smallesSubtringWithPattern("abdabca", "abc"));
+
+        //Challenge4 Word Concatenation
+        //Given a string and a list of words, find all the starting indices of substrings in the given string that are a
+        // concatenation of all the given words exactly once without any overlapping of words.
+        // It is given that all words are of the same length.
+        //Input: String="catfoxcat", Words=["cat", "fox"]
+        //Output: [0, 3]
+        //Explanation: The two substring containing both the words are "catfox" & "foxcat".
+        System.out.println(A_SlidingWindow.wordsConcatenation("catcatfoxfox", new String[] {"cat", "fox"}));
     }
 }
