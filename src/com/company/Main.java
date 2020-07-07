@@ -97,6 +97,33 @@ public class Main {
         //Input: String="catfoxcat", Words=["cat", "fox"]
         //Output: [0, 3]
         //Explanation: The two substring containing both the words are "catfox" & "foxcat".
-        System.out.println(A_SlidingWindow.wordsConcatenation("catcatfoxfox", new String[] {"cat", "fox"}));
+        //System.out.println(A_SlidingWindow.wordsConcatenation("catcatfoxfox", new String[] {"cat", "fox"}));
+
+/*
+Two Pointers
+*/
+        //Pair in Array
+        //Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.
+        //Write a function to return the indices of the two numbers (i.e. the pair) such that they add up to the given target.
+        //Input: [1, 2, 3, 4, 6], target=6
+        //Output: [1, 3]
+        //Explanation: The numbers at index 1 and 3 add up to 6: 2+4=6
+        //int[] result = B_TwoPointers.pairInArray(new int[] { 1, 2, 3, 4, 6 }, 6);
+        //System.out.println("Pair with target sum: [" + result[0] + ", " + result[1] + "]");
+
+        //Squaring Sorting
+        //Given a sorted array, create a new array containing squares of all the number of the input array in the sorted order.
+        //Input: [-2, -1, 0, 2, 3]
+        //Output: [0, 1, 4, 4, 9]
+        //int[] result = B_TwoPointers.squaringSorted(new int[] {-3, -1, 0, 1, 2});
+        //System.out.println("[" + result[0] + "," + result[1] + "," + result[2] + "," + result[3]+ "," + result[4] + "]");
+
+        //Triplet Sum to Zero
+        //Given an array of unsorted numbers, find all unique triplets in it that add up to zero.
+        //Input: [-3, 0, 1, 2, -1, 1, -2]
+        //Output: [-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]
+        //Explanation: There are four unique triplets whose sum is equal to zero.
+        //System.out.println(B_TwoPointers.TripletSumToZero(new int[] {-3, 0, 1, 2, -1, 1, -2}));
+        //System.out.println(B_TwoPointers.TripletSumToZero(new int[] {-5, 2, -1, -2, 3}));
     }
 }
