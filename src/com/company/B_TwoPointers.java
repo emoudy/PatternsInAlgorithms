@@ -62,6 +62,7 @@ public class B_TwoPointers {
         return squares;
     }
 
-//    static List<List<Integer>> TripletSumToZero(int[] arr) {
+//    static List<List<Integer>> tripletSumToZero(int[] arr) {
+//
 //    }
 }

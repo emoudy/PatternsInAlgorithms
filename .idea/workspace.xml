@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1d629b6-5b24-46a4-a28e-65371fdeb378" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/B_TwoPointers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/C_FastAndSlowPointers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/D_MergeIntervals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/E_CyclicSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/F_InPlaceReversalLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/G_TreeBreathFirstSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/H_TreeDepthFirstSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/I_TwoHeaps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/J_SubSets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/K_ModifiedBinarySearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/L_BitwiseXOR.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/M_TopKElements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/N_KwayMerge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/O_DynamicPrograming.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/P_Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/educativeIO/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/educativeIO/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/B_TwoPointers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/B_TwoPointers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
