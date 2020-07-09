@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class B_TwoPointers {
@@ -62,7 +63,32 @@ public class B_TwoPointers {
         return squares;
     }
 
-//    static List<List<Integer>> tripletSumToZero(int[] arr) {
-//
-//    }
+    static List<List<Integer>> tripletSumToZero(int[] arr) {
+        int ignore = Integer.MAX_VALUE;
+        List<List<Integer>> arrays = new ArrayList<>();
+        for(int pointerOne = 0; pointerOne < arr.length-2; pointerOne++){
+            int leftValue = arr[pointerOne];
+            for(int pointerTwo = 1; pointerTwo < arr.length-1; pointerTwo++) {
+                int midValue = arr[pointerTwo];
+                int total = midValue + leftValue;
+                for (int pointerThree = 2; pointerThree < arr.length; pointerThree++) {
+                    int rightValue = arr[pointerThree];
+                    boolean match = false;
+
+                    if (total + rightValue == 0) {
+                        List<Integer> values = Arrays.asList(rightValue, midValue, leftValue);
+                        arrays.add(values);
+                        match = true;
+                    }
+                    if (midValue == rightValue || leftValue == rightValue) {
+                        arr[pointerThree] = ignore;
+                    } else if (midValue == leftValue) {
+                        arr[pointerTwo] = ignore;
+                    }
+                    if (match == true) break;
+                }
+            }
+        }
+        return arrays;
+    }
 }

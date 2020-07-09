@@ -124,6 +124,6 @@ Two Pointers
         //Output: [-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]
         //Explanation: There are four unique triplets whose sum is equal to zero.
         //System.out.println(B_TwoPointers.TripletSumToZero(new int[] {-3, 0, 1, 2, -1, 1, -2}));
-        System.out.println(B_TwoPointers.tripletSumToZero(new int[] {-5, 2, -1, -2, 3}));
+        System.out.println(B_TwoPointers.tripletSumToZero(new int[] {-3, 0, 1, 2, -1, 1, -2}));
     }
 }
