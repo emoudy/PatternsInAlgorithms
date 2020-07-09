@@ -68,10 +68,10 @@ public class B_TwoPointers {
         List<List<Integer>> arrays = new ArrayList<>();
         for(int pointerOne = 0; pointerOne < arr.length-2; pointerOne++){
             int leftValue = arr[pointerOne];
-            for(int pointerTwo = 1; pointerTwo < arr.length-1; pointerTwo++) {
+            for(int pointerTwo = pointerOne + 1; pointerTwo < arr.length-1; pointerTwo++) {
                 int midValue = arr[pointerTwo];
                 int total = midValue + leftValue;
-                for (int pointerThree = 2; pointerThree < arr.length; pointerThree++) {
+                for (int pointerThree = pointerTwo + 1; pointerThree < arr.length; pointerThree++) {
                     int rightValue = arr[pointerThree];
                     boolean match = false;
 
@@ -79,13 +79,13 @@ public class B_TwoPointers {
                         List<Integer> values = Arrays.asList(rightValue, midValue, leftValue);
                         arrays.add(values);
                         match = true;
+                        if (midValue == rightValue || rightValue == leftValue) {
+                            arr[pointerThree] = ignore;
+                        } else if (midValue == leftValue) {
+                            arr[pointerTwo] = ignore;
+                        }
                     }
-                    if (midValue == rightValue || leftValue == rightValue) {
-                        arr[pointerThree] = ignore;
-                    } else if (midValue == leftValue) {
-                        arr[pointerTwo] = ignore;
-                    }
-                    if (match == true) break;
+                    if (match) break;
                 }
             }
         }
